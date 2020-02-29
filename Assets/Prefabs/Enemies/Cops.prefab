@@ -91,10 +91,10 @@ GameObject:
   - component: {fileID: 3396542}
   - component: {fileID: 2337332}
   - component: {fileID: 64106219492363448}
-  - component: {fileID: 8896804987558120932}
+  - component: {fileID: 3630030968899626681}
   - component: {fileID: 1128460328}
+  - component: {fileID: 8896804987558120932}
   - component: {fileID: 1004521616}
-  - component: {fileID: 1004521622}
   - component: {fileID: 1004521615}
   m_Layer: 0
   m_Name: Cops
@@ -182,23 +182,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43419491911717522, guid: d92eb9c3783073941bf5707fb0fff5c0, type: 2}
---- !u!114 &8896804987558120932
-MonoBehaviour:
+--- !u!65 &3630030968899626681
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150866}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e23eefa2ef6949738d61807071e6b06a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 15
-  _angularSpeed: 120
-  _maxAttackDistance: 10
-  _maxDistanceFromPlayer: 50
-  _chargeSpeed: 30
+  serializedVersion: 2
+  m_Size: {x: 4.443291, y: 3.0279555, z: 7.168575}
+  m_Center: {x: 0, y: 1.49, z: 0}
 --- !u!54 &1128460328
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,6 +211,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &8896804987558120932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23eefa2ef6949738d61807071e6b06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 15
+  _angularSpeed: 120
+  _maxAttackDistance: 10
+  _maxDistanceFromPlayer: 50
+  _damage: 20
+  _chargeSpeed: 30
+  _collidSound: {fileID: 8300000, guid: 4556f9d8c7e6d2c42bc1bbb87e2cd8a8, type: 3}
 --- !u!195 &1004521616
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -237,20 +252,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!64 &1004521622
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 150866}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43419491911717522, guid: d92eb9c3783073941bf5707fb0fff5c0, type: 2}
 --- !u!82 &1004521615
 AudioSource:
   m_ObjectHideFlags: 0

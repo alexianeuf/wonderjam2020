@@ -7,7 +7,7 @@ namespace Enemies
     ///
     /// Base for a following Enemy
     /// </summary>
-    // [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(NavMeshAgent))]
     public abstract class Enemy : MonoBehaviour
     {
         [SerializeField] [Tooltip("Enemy movement speed")]
@@ -21,58 +21,55 @@ namespace Enemies
 
         [SerializeField] [Tooltip("Distance from player where the enemy is destroyed")]
         private float _maxDistanceFromPlayer = 50.0f;
-        
-        protected bool isAttacking;
 
-        protected Transform player;
-        private bool isplayerNotNull = true;
-        
-        private NavMeshAgent navMeshAgent;
+        [SerializeField] [Tooltip("Damage done when attack success")]
+        protected float _damage = 20.0f;
 
-        // Start is called before the first frame update
-        private void Start()
-        {
-        }
+        protected bool IsAttacking;
+
+        protected Transform Player;
+        private bool isPlayerNotNull = true;
+
+        protected NavMeshAgent NavMeshAgent;
 
         void Awake()
         {
-            player = GameObject.FindWithTag("Player").transform;
-            navMeshAgent = GetComponent<NavMeshAgent>();
+            Player = GameObject.FindWithTag("Player").transform;
+            NavMeshAgent = GetComponent<NavMeshAgent>();
 
-            if (player == null)
+            if (Player == null)
             {
                 Debug.LogWarning("Please add a player to the scene so enemy can follow them.");
-                isplayerNotNull = false;
+                isPlayerNotNull = false;
             }
             
-
-            if (navMeshAgent == null)
+            if (NavMeshAgent == null)
             {
                 Debug.LogError("The enemy must have a NavMeshAgent");
             }
 
-            navMeshAgent.speed = _speed;
-            navMeshAgent.angularSpeed = _angularSpeed;
+            NavMeshAgent.speed = _speed;
+            NavMeshAgent.angularSpeed = _angularSpeed;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (isplayerNotNull)
+            if (isPlayerNotNull)
             {
-                if (Vector3.Distance(player.position, transform.position) > _maxDistanceFromPlayer)
+                if (Vector3.Distance(Player.position, transform.position) > _maxDistanceFromPlayer)
                 {
                     Destroy(this.gameObject);
                     return;
                 }
-                
+
                 FollowPlayer();
-                
-                bool maxDis = Vector3.Distance(player.position, transform.position) < _maxAttackDistance;
+
+                bool maxDis = Vector3.Distance(Player.position, transform.position) < _maxAttackDistance;
                 // So the player has a chance to save himself
-                bool minDis = Vector3.Distance(player.position, transform.position) > 1.0f;
-                
-                if (!isAttacking && maxDis && minDis)
+                bool minDis = Vector3.Distance(Player.position, transform.position) > 1.0f;
+
+                if (!IsAttacking && maxDis && minDis)
                 {
                     AttackPlayer();
                 }
@@ -81,7 +78,7 @@ namespace Enemies
 
         private void FollowPlayer()
         {
-            navMeshAgent.SetDestination(player.position);
+            NavMeshAgent.SetDestination(Player.position);
         }
 
         protected abstract void AttackPlayer();

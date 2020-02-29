@@ -5,7 +5,6 @@ public class PlayerHealthController : MonoBehaviour
     [SerializeField] [Tooltip("Player max health")]
     private float _maxHealth = 100.0f;
 
-    [SerializeField] // TODO : remove this Serialize
     private float currentHealth;
 
     private void Awake()
@@ -20,7 +19,20 @@ public class PlayerHealthController : MonoBehaviour
         if (currentHealth < 0)
         {
             // TODO : launch GameOver Screen
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
+    }
+
+    public void Heal(float percent)
+    {
+        currentHealth += _maxHealth * (percent / 100);
+        
+        if (currentHealth > _maxHealth)
+            currentHealth = _maxHealth;
+    }
+
+    public bool IsPlayerAlive()
+    {
+        return currentHealth > 0;
     }
 }
