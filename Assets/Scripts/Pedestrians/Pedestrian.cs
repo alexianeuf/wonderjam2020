@@ -6,9 +6,8 @@ using UnityEngine.AI;
 
 public class Pedestrian : MonoBehaviour
 {
+    private GameObject m_currentWayPoint = null;
     [SerializeField] public GameObject m_wayPointHolder;
-    public GameObject m_currentWayPoint = null;
-
     [SerializeField] public List<GameObject> m_prefabList;
 
     protected NavMeshAgent NavMeshAgent;
