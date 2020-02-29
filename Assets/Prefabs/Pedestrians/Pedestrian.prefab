@@ -42,7 +42,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6424938850964593689}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 3, z: 1}
@@ -60,7 +60,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_wayPointHolder: {fileID: 0}
-  m_currentWayPoint: {fileID: 0}
   m_prefabList:
   - {fileID: 100000, guid: d714ac2c5f4f93d49b94880740d4e6a2, type: 3}
   - {fileID: 100000, guid: c14bb5ce28dbb7442a2f79d8b6a061ce, type: 3}
