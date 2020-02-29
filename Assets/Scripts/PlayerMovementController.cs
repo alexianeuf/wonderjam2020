@@ -34,22 +34,37 @@ public class PlayerMovementController : MonoBehaviour
             Vector3 leftForwardPos = forwardPos - transform.right * m_rotationStrength;
 
             Vector3 look = Vector3.Lerp(leftForwardPos, rightForwardPos, m_inputValue.x + 1);
-            
+
             transform.LookAt(look);
         }
     }
 
     private void Move()
     {
-        Debug.DrawLine(transform.position, transform.position + (transform.forward * 6000), Color.magenta);
-        Debug.DrawRay(transform.position, transform.forward, Color.magenta);
-
         if (!Mathf.Approximately(m_inputValue.y, 0f))
         {
             Vector3 moveVector = transform.forward * m_playerSpeed * m_inputValue.y;
-
-            m_rigidbody.MovePosition(m_rigidbody.position + moveVector);
+            m_rigidbody.AddForce(moveVector);
+            
+//            m_rigidbody.velocity = new Vector3 (moveVector.x, m_rigidbody.velocity.y, moveVector.z);
+//            m_rigidbody.MovePosition(m_rigidbody.position + moveVector);
         }
+
+        ClampAngularVelocity();
+    }
+
+    private void ClampAngularVelocity()
+    {
+        float min = -0.4f;
+        float max = 0.4f;
+        Vector3 angularVelocity = m_rigidbody.angularVelocity;
+        
+        angularVelocity.x = Mathf.Clamp(angularVelocity.x, min, max);
+        angularVelocity.z = Mathf.Clamp(angularVelocity.z, min, max);
+
+        m_rigidbody.angularVelocity = angularVelocity;
+        
+        Debug.Log(m_rigidbody.angularVelocity);
     }
 
     public void OnMove(InputValue value)
