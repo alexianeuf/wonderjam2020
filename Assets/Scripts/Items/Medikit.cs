@@ -17,7 +17,7 @@ namespace Items
             {
                 GameObject player = other.transform.parent.gameObject;
                 PlayerHealthController playerHealthController = player.GetComponent<PlayerHealthController>();
-                AudioSource.PlayClipAtPoint(_pickUpItemSound, transform.position, 200);
+                AudioSource.PlayClipAtPoint(_pickUpItemSound, Camera.main.transform.position);
 
                 if (playerHealthController != null)
                     playerHealthController.Heal(_healingPercent);    
