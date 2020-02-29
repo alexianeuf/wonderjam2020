@@ -1,4 +1,5 @@
 This game uses these sounds from freesound:
-police-siren from vlammenos (https://freesound.org/people/vlammenos/)
-car-crash from Eponn (https://freesound.org/people/Eponn/)
-itemize from Scrampunk (https://freesound.org/people/Scrampunk/)
+    - police-siren from vlammenos (https://freesound.org/people/vlammenos/)
+    - car-crash from Eponn (https://freesound.org/people/Eponn/)
+    - itemize from Scrampunk (https://freesound.org/people/Scrampunk/)
+    - potion-drink-long from Jamius (https://freesound.org/people/Jamius/)

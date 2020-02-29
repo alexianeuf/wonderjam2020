@@ -9,6 +9,9 @@ namespace Items
         [SerializeField] [Tooltip("Percentage of fuel to restore")] [Range(25, 100)]
         private float _percentOfFuel;
 
+        [SerializeField] [Tooltip("Sound launch when pick up")]
+        private AudioClip _pickUpSound;
+
         private void OnTriggerEnter(Collider other)
         {
             GameObject player = other.transform.parent.gameObject;
@@ -17,6 +20,8 @@ namespace Items
                 PlayerFuelController fuelController = player.GetComponent<PlayerFuelController>();
                 PlayerMovementController movementController = player.GetComponent<PlayerMovementController>();
                 PlayerInput playerInput = player.GetComponent<PlayerInput>();
+                
+                AudioSource.PlayClipAtPoint(_pickUpSound, Camera.main.transform.position);
 
                 if (!movementController.CanMove)
                     movementController.CanMove = true;
