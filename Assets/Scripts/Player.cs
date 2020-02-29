@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public static GameObject instance;
-
     void Start()
     {
-        instance = gameObject;
+        instance = this.gameObject;
     }
 }
