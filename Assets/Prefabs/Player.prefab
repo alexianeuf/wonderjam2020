@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxFuelQuantity: 100
   _fuelUsage: 1
-  currentFuelQuantity: 10
+  currentFuelQuantity: 0
 --- !u!1001 &2746404334051053005
 PrefabInstance:
   m_ObjectHideFlags: 0
