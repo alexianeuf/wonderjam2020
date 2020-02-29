@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -11,13 +12,14 @@ public class Pedestrian : MonoBehaviour
     [SerializeField] public List<GameObject> m_prefabList;
 
     protected NavMeshAgent NavMeshAgent;
+    private GameObject m_meshChild;
 
     private void Awake()
     {
         NavMeshAgent = GetComponent<NavMeshAgent>();
         
-        int index = Random.Range(0, m_prefabList.Count);
-        Instantiate(m_prefabList[index], transform.position, transform.rotation, transform);
+        int index = UnityEngine.Random.Range(0, m_prefabList.Count);
+        m_meshChild = Instantiate(m_prefabList[index], transform.position, transform.rotation, transform);
     }
 
     // Start is called before the first frame update
@@ -37,7 +39,7 @@ public class Pedestrian : MonoBehaviour
 
         while (nextWayPoint == null || nextWayPoint.Equals(m_currentWayPoint))
         {
-            int index = Random.Range(0, m_wayPointHolder.transform.childCount);
+            int index = UnityEngine.Random.Range(0, m_wayPointHolder.transform.childCount);
             nextWayPoint = m_wayPointHolder.transform.GetChild(index).gameObject;
         }
 
@@ -51,5 +53,42 @@ public class Pedestrian : MonoBehaviour
             SelectNextWayPoint();
             NavMeshAgent.SetDestination(m_currentWayPoint.transform.position);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerFrenzyController frenzyController = other.transform.parent.gameObject.GetComponent<PlayerFrenzyController>();
+            frenzyController.IncreaseFrenzyLevel();
+
+            OnDeath();
+        }
+    }
+
+    private void OnDeath()
+    {
+        StartCoroutine("DeathRoutine");
+    }
+
+    IEnumerator DeathRoutine()
+    {
+        // hide pedestrian body
+        m_meshChild.SetActive(false);
+
+        // blood splashes
+        GetComponentInChildren<ParticleSystem>().Play();
+
+        // ouch + car collision sounds
+        foreach (AudioSource audio in GetComponents<AudioSource>())
+        {
+            audio.Play();
+        }
+        PedestrianManager._activePedestriansCount--;
+
+        // let it all finish
+        yield return new WaitForSeconds(1f);
+
+        Destroy(gameObject);
     }
 }
