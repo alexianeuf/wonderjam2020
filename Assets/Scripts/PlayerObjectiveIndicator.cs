@@ -10,7 +10,7 @@ public class PlayerObjectiveIndicator : MonoBehaviour
         var objective = GameManager.instance.GetComponent<ObjectiveController>().m_currentObjective;
         if (objective == null)
             return;
-        
+
         transform.LookAt(objective.transform);
     }
 }
