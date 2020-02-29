@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -15,7 +14,7 @@ public class PlayerMovementController : MonoBehaviour
 
     public bool IsMoving { get; private set; }
     public bool CanMove = true;
-    
+
     private PlayerInput playerInput;
 
     private void Awake()
@@ -36,6 +35,9 @@ public class PlayerMovementController : MonoBehaviour
 
         if (CanMove)
         {
+            if (!IsGrounded())
+                return;
+
             Move();
             Rotate();
         }
@@ -97,5 +99,27 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (Mathf.Approximately(m_inputValue.y, 0f) && Mathf.Approximately(m_inputValue.x, 0f))
             IsMoving = false;
+    }
+
+    [SerializeField] private bool isGrounded;
+
+    public bool IsGrounded()
+    {
+        RaycastHit hit;
+        int layerMask = 1 << LayerMask.NameToLayer("Player");
+        layerMask = ~layerMask;
+
+        var origin = transform.position + transform.TransformDirection(Vector3.up);
+        var distance = 2;
+
+        Debug.DrawRay(origin, transform.TransformDirection(Vector3.down) * distance, Color.yellow, 0, false);
+        isGrounded = Physics.Raycast(origin, transform.TransformDirection(Vector3.down), out hit, distance, layerMask);
+
+        if (hit.collider != null)
+        {
+            Debug.Log(hit.collider.name);
+        }
+
+        return isGrounded;
     }
 }
