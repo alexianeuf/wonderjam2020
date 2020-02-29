@@ -13,6 +13,16 @@ public class PlayerMovementController : MonoBehaviour
     private Rigidbody m_rigidbody;
     private Vector2 m_inputValue;
 
+    public bool IsMoving { get; private set; }
+    public bool CanMove = true;
+    
+    private PlayerInput playerInput;
+
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
+
     private void Start()
     {
         m_rigidbody = GetComponent<Rigidbody>();
@@ -22,8 +32,18 @@ public class PlayerMovementController : MonoBehaviour
     {
         m_realPlayerSpeed = m_playerSpeed * m_rigidbody.mass;
 
-        Move();
-        Rotate();
+        CheckIfMoving();
+
+        if (CanMove)
+        {
+            Move();
+            Rotate();
+        }
+        else if (m_rigidbody.velocity.magnitude <= 0)
+        {
+            // TODO : Launch GAME OVER Screen - see how prevent a pop if player hit a barrel at the same frame
+            playerInput.defaultActionMap = "UI";
+        }
     }
 
     private void Rotate()
@@ -69,5 +89,13 @@ public class PlayerMovementController : MonoBehaviour
     public void OnMove(InputValue value)
     {
         m_inputValue = value.Get<Vector2>();
+        if (CanMove)
+            IsMoving = true;
+    }
+
+    private void CheckIfMoving()
+    {
+        if (Mathf.Approximately(m_inputValue.y, 0f) && Mathf.Approximately(m_inputValue.x, 0f))
+            IsMoving = false;
     }
 }

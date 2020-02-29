@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5089980362920326655}
   - component: {fileID: 343061683960776481}
   - component: {fileID: 1099610191}
+  - component: {fileID: 347037623}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -81,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerSpeed: 100
   m_rotationStrength: 5
+  CanMove: 1
 --- !u!114 &5089980362920326655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +127,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  currentHealth: 0
+--- !u!114 &347037623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828594359104317599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7aba79bc0b84aaba63c9c142d9b2c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxFuelQuantity: 100
+  _fuelUsage: 1
+  currentFuelQuantity: 10
 --- !u!1001 &2746404334051053005
 PrefabInstance:
   m_ObjectHideFlags: 0
