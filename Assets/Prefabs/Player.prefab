@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 347037623}
   - component: {fileID: 1548257191}
   - component: {fileID: 439917940051961277}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -96,9 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd993a1d7b1f4d242972c40df7d45890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playerSpeed: 100
+  m_playerSpeed: 30
   m_rotationStrength: 5
+  m_velocityDamp: 1
   CanMove: 1
+  isGrounded: 0
 --- !u!114 &5089980362920326655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +203,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3a6b3b3cbef4bd547ba26fa2fb59dd21, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3a6b3b3cbef4bd547ba26fa2fb59dd21, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -244,6 +250,11 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 3a6b3b3cbef4bd547ba26fa2fb59dd21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64802153791716974, guid: 3a6b3b3cbef4bd547ba26fa2fb59dd21,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a6b3b3cbef4bd547ba26fa2fb59dd21, type: 3}

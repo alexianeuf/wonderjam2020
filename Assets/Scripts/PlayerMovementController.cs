@@ -7,10 +7,13 @@ public class PlayerMovementController : MonoBehaviour
 {
     [SerializeField] private float m_playerSpeed = 10f;
     [SerializeField] private float m_rotationStrength = 5f;
+    [SerializeField] private float m_velocityDamp = 1f;
 
-    private float m_realPlayerSpeed;
     private Rigidbody m_rigidbody;
     private Vector2 m_inputValue;
+    private Vector3 m_moveVector = Vector3.zero;
+    private Vector3 m_velocity = Vector3.zero;
+
 
     public bool IsMoving { get; private set; }
     public bool CanMove = true;
@@ -29,8 +32,6 @@ public class PlayerMovementController : MonoBehaviour
 
     public void FixedUpdate()
     {
-        m_realPlayerSpeed = m_playerSpeed * m_rigidbody.mass;
-
         CheckIfMoving();
 
         if (CanMove)
@@ -66,11 +67,18 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (!Mathf.Approximately(m_inputValue.y, 0f))
         {
-            Vector3 moveVector = transform.forward * m_realPlayerSpeed * m_inputValue.y;
-            m_rigidbody.AddForce(moveVector);
+//            Vector3 moveVector = transform.forward * m_realPlayerSpeed * m_inputValue.y;
+//            m_rigidbody.AddForce(moveVector);
 
 //            m_rigidbody.velocity = new Vector3 (moveVector.x, m_rigidbody.velocity.y, moveVector.z);
-//            m_rigidbody.MovePosition(m_rigidbody.position + moveVector);
+            m_moveVector = transform.forward * m_playerSpeed * m_inputValue.y * Time.fixedDeltaTime;
+            m_rigidbody.MovePosition(m_rigidbody.position + m_moveVector);
+        }
+        else
+        {
+            // apply the remaining velocity
+            m_moveVector = Vector3.SmoothDamp(m_moveVector, Vector3.zero, ref m_velocity, m_velocityDamp);
+            m_rigidbody.MovePosition(m_rigidbody.position + m_moveVector);
         }
 
         ClampAngularVelocity();
@@ -114,11 +122,6 @@ public class PlayerMovementController : MonoBehaviour
 
         Debug.DrawRay(origin, transform.TransformDirection(Vector3.down) * distance, Color.yellow, 0, false);
         isGrounded = Physics.Raycast(origin, transform.TransformDirection(Vector3.down), out hit, distance, layerMask);
-
-        if (hit.collider != null)
-        {
-            Debug.Log(hit.collider.name);
-        }
 
         return isGrounded;
     }
