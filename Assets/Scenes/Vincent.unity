@@ -379,6 +379,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 343061683960776481, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 343061683960776481, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
+        type: 3}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 343061683960776481, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4435204978832094330, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -439,9 +454,19 @@ PrefabInstance:
       propertyPath: m_camera
       value: 
       objectReference: {fileID: 179272103}
+    - target: {fileID: 5121048350924147787, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
+        type: 3}
+      propertyPath: m_playerSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5828594359104317599, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828594359104317599, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
