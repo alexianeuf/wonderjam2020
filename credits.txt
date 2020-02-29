@@ -1,2 +1,4 @@
 This game uses these sounds from freesound:
-police-siren from vlammenos (https://freesound.org/s/52906/)
+police-siren from vlammenos (https://freesound.org/people/vlammenos/)
+car-crash from Eponn (https://freesound.org/people/Eponn/)
+itemize from Scrampunk (https://freesound.org/people/Scrampunk/)
