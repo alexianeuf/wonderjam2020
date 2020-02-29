@@ -63,8 +63,6 @@ public class PlayerMovementController : MonoBehaviour
         angularVelocity.z = Mathf.Clamp(angularVelocity.z, min, max);
 
         m_rigidbody.angularVelocity = angularVelocity;
-        
-        Debug.Log(m_rigidbody.angularVelocity);
     }
 
     public void OnMove(InputValue value)
