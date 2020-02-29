@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5121048350924147787}
   - component: {fileID: 5089980362920326655}
   - component: {fileID: 343061683960776481}
+  - component: {fileID: 1099610191}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -111,6 +112,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1099610191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828594359104317599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae06ede46ae4cf0b7009a8628b1bff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  currentHealth: 0
 --- !u!1001 &2746404334051053005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -121,6 +136,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 3a6b3b3cbef4bd547ba26fa2fb59dd21, type: 3}
       propertyPath: m_Name
       value: taxi_mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3a6b3b3cbef4bd547ba26fa2fb59dd21, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3a6b3b3cbef4bd547ba26fa2fb59dd21, type: 3}
       propertyPath: m_LocalPosition.x
