@@ -8,14 +8,22 @@ public class ObjectiveController : MonoBehaviour
 
     public GameObject m_currentObjective;
     private List<GameObject> m_objectivesDone;
+    private List<GameObject> m_selectableObjectives;
+    private List<GameObject> m_allObjectives;
 
     private void Start()
     {
         m_objectivesDone = new List<GameObject>();
+        m_selectableObjectives = new List<GameObject>();
+        m_allObjectives = new List<GameObject>();
 
         for (int i = 0; i < m_objectiveHolder.transform.childCount; i++)
         {
             GameObject current = m_objectiveHolder.transform.GetChild(i).gameObject;
+            current.GetComponent<Objective>().TargetObjective(false);
+            
+            m_selectableObjectives.Add(current);
+            m_allObjectives.Add(current);
         }
 
         SelectNextObjective();
@@ -23,40 +31,33 @@ public class ObjectiveController : MonoBehaviour
 
     public void SelectNextObjective()
     {
-        if (m_objectiveHolder.transform.childCount == 0)
-            return;
-
-        // if all the objectives has been done
-        if (m_objectiveHolder.transform.childCount == m_objectivesDone.Count)
-            m_objectivesDone.Clear();
-
-        
-        // compute the farthest object 
-        GameObject farthestObjective = m_objectiveHolder.transform.GetChild(0).gameObject;
-        float farthestDistance = 0f;
-
-        for (int i = 0; i < m_objectiveHolder.transform.childCount; i++)
+        // if there is no more objectives
+        if (m_selectableObjectives.Count == 0)
         {
-            GameObject current = m_objectiveHolder.transform.GetChild(i).gameObject;
-            // reset
-            current.GetComponent<Objective>().TargetObjective(false);
+            // reset the done objectives
+            m_objectivesDone.Clear();
             
-            // if the object has been already done continue to the next one
-            if (m_objectivesDone.Contains(current))
-                continue;
-
-            float currentDistance = Vector3.Distance(m_player.transform.position, current.transform.position);
-
-            if (currentDistance > farthestDistance)
-            {
-                farthestDistance = currentDistance;
-                farthestObjective = current;
-            }
+            // reset the selectable objectives
+            m_selectableObjectives = m_allObjectives.GetRange(0, m_allObjectives.Count);
         }
 
-        m_currentObjective = farthestObjective;
+        // choose the new objective
+        int childIndex = Random.Range(0, m_selectableObjectives.Count);
+        var nextOObjective = m_selectableObjectives[childIndex];
+        
+        
+        // change the current objective
+        if (m_currentObjective != null)
+        {
+            m_currentObjective.GetComponent<Objective>().TargetObjective(false);
+        }
+
+        m_currentObjective = nextOObjective;
         m_currentObjective.GetComponent<Objective>().TargetObjective(true);
+        
+        // update the lists
         m_objectivesDone.Add(m_currentObjective);
+        m_selectableObjectives.Remove(m_currentObjective);
     }
 
     public void OnObjectiveEnter(GameObject objective)

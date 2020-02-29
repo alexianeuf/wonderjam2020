@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -8,12 +9,17 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float m_playerSpeed = 10f;
     [SerializeField] private float m_rotationStrength = 5f;
     [SerializeField] private float m_velocityDamp = 1f;
+    [SerializeField] private bool isGrounded;
+    [SerializeField] private int m_turtleDelay = 4;
+
 
     private Rigidbody m_rigidbody;
     private Vector2 m_inputValue;
     private Vector3 m_moveVector = Vector3.zero;
     private Vector3 m_velocity = Vector3.zero;
 
+    private IEnumerator m_turtleCoroutine;
+    private bool m_turtleCoroutineStarted;
 
     public bool IsMoving { get; private set; }
     public bool CanMove = true;
@@ -28,6 +34,7 @@ public class PlayerMovementController : MonoBehaviour
     private void Start()
     {
         m_rigidbody = GetComponent<Rigidbody>();
+        m_turtleCoroutine = TurtleCouroutine();
     }
 
     public void FixedUpdate()
@@ -37,7 +44,14 @@ public class PlayerMovementController : MonoBehaviour
         if (CanMove)
         {
             if (!IsGrounded())
+            {
+                StartTurtleRoutine();
                 return;
+            }
+            else
+            {
+                StopTurtleRoutine();
+            }
 
             Move();
             Rotate();
@@ -48,6 +62,8 @@ public class PlayerMovementController : MonoBehaviour
             playerInput.defaultActionMap = "UI";
         }
     }
+
+    #region Movement
 
     private void Rotate()
     {
@@ -109,8 +125,6 @@ public class PlayerMovementController : MonoBehaviour
             IsMoving = false;
     }
 
-    [SerializeField] private bool isGrounded;
-
     public bool IsGrounded()
     {
         RaycastHit hit;
@@ -125,4 +139,44 @@ public class PlayerMovementController : MonoBehaviour
 
         return isGrounded;
     }
+
+    #endregion
+
+    #region turtle
+
+    private IEnumerator TurtleCouroutine()
+    {
+        yield return new WaitForSeconds(m_turtleDelay);
+
+        QuitTurtleMode();
+        m_turtleCoroutineStarted = false;
+    }
+
+    private void StopTurtleRoutine()
+    {
+        if (!m_turtleCoroutineStarted)
+            return;
+
+        StopCoroutine(m_turtleCoroutine);
+        m_turtleCoroutineStarted = false;
+    }
+
+    private void StartTurtleRoutine()
+    {
+        if (!m_turtleCoroutineStarted)
+        {
+            m_turtleCoroutineStarted = true;
+            m_turtleCoroutine = TurtleCouroutine();
+            StartCoroutine(m_turtleCoroutine);
+        }
+    }
+
+    private void QuitTurtleMode()
+    {
+        Debug.Log("Deturtleing player");
+        m_rigidbody.position = m_rigidbody.position + Vector3.up * 2;
+        m_rigidbody.rotation = Quaternion.identity;
+    }
+
+    #endregion
 }
