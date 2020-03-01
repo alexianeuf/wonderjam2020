@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Managers;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -21,6 +22,11 @@ public class PlayerFrenzyController : MonoBehaviour
 
     private bool isInDecrease;
 
+    private void Start()
+    {
+        Radio.instance.CalmMode();
+    }
+
     public void IncreaseFrenzyLevel()
     {
         currentFrenzyLevel += _frenzyIncrease;
@@ -28,7 +34,7 @@ public class PlayerFrenzyController : MonoBehaviour
         if (currentFrenzyLevel > _maxFrenzyLevel)
         {
             currentFrenzyLevel = _maxFrenzyLevel;
-            // TODO : if not in Frenzy mode enable it
+            FrenzyManager.instance.OnFrenzyStart();
             Debug.Log("Oh no ! I killed to many people !");
         }
     }
@@ -49,7 +55,7 @@ public class PlayerFrenzyController : MonoBehaviour
         if (currentFrenzyLevel < 0)
         {
             currentFrenzyLevel = 0;
-            // TODO : if in Frenzy mode disable it
+            FrenzyManager.instance.OnFrenzyExit();
             Debug.Log("I've been a nice person, I'm better now !");
         }
 

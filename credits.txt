@@ -3,3 +3,16 @@ This game uses these sounds from freesound:
     - car-crash from Eponn (https://freesound.org/people/Eponn/)
     - itemize from Scrampunk (https://freesound.org/people/Scrampunk/)
     - potion-drink-long from Jamius (https://freesound.org/people/Jamius/)
+	- radio static 01.wav from pushkin (https://freesound.org/people/pushkin/)
+	- ouch.mp3 from SexyNakedBunny (https://freesound.org/people/SexyNakedBunny/)
+	- clank car crash collision from qubodup (https://freesound.org/people/qudobup/)
+
+
+Music :
+“The Jazz Man”
+by Eric Matyas
+www.soundimage.org
+
+"Extreme action"
+by Bensound
+www.bensound.com
