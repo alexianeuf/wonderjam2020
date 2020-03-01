@@ -34,7 +34,8 @@ public class PlayerFrenzyController : MonoBehaviour
         if (currentFrenzyLevel > _maxFrenzyLevel)
         {
             currentFrenzyLevel = _maxFrenzyLevel;
-            FrenzyManager.instance.OnFrenzyStart();
+            if (!FrenzyManager.isFrenzy)
+                FrenzyManager.instance.OnFrenzyStart();
             Debug.Log("Oh no ! I killed to many people !");
         }
     }
@@ -55,7 +56,8 @@ public class PlayerFrenzyController : MonoBehaviour
         if (currentFrenzyLevel < 0)
         {
             currentFrenzyLevel = 0;
-            FrenzyManager.instance.OnFrenzyExit();
+            if (FrenzyManager.isFrenzy)
+                FrenzyManager.instance.OnFrenzyExit();
             Debug.Log("I've been a nice person, I'm better now !");
         }
 

@@ -1,6 +1,8 @@
 ﻿using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Radio : MonoBehaviour
 {
@@ -35,14 +37,36 @@ public class Radio : MonoBehaviour
 
     internal void CalmMode()
     {
-        Play("Calm");
+        Debug.Log("Radio chill un max");
+        StartCoroutine("CalmRoutine");
+
+    }
+
+    IEnumerator CalmRoutine()
+    {
+        Stop("Anger");
         Play("RadioChange");
+        // let it all finish
+        yield return new WaitForSeconds(1f);
+        Play("Calm");
+
     }
 
     internal void AngryMode()
     {
-        Play("Anger");
+        Debug.Log("Radio party hard");
+        StartCoroutine("AngerRoutine");
+
+    }
+
+    IEnumerator AngerRoutine()
+    {
+        Stop("Calm");
         Play("RadioChange");
+        // let it all finish
+        yield return new WaitForSeconds(1f);
+        Play("Anger");
+
     }
 
     public void Play(string sound)
