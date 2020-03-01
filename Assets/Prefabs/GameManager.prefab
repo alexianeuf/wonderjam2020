@@ -787,7 +787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 355318926769617971}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!114 &591928957263928088
@@ -1093,6 +1093,7 @@ GameObject:
   - component: {fileID: 1460285627408557647}
   - component: {fileID: 1460285627408557648}
   - component: {fileID: 7932020452076644302}
+  - component: {fileID: 4024003263290919403}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1157,6 +1158,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseUiGameObject: {fileID: 1650905282}
   GameOverUiGameObject: {fileID: 2746203964017773969}
+--- !u!114 &4024003263290919403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439982923018895852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b883fd33f4ee54f4aab443afb16c71e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 30
+  currentTime: 0
 --- !u!1 &8759262048839173519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,6 +1532,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99ed6474ea934e34eae82c60f44fa0cc, type: 3}
+--- !u!1 &355318926769617971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 754012031803086559, guid: 99ed6474ea934e34eae82c60f44fa0cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1051750340601129708}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5447541510818130550 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4972290066139267226, guid: 99ed6474ea934e34eae82c60f44fa0cc,
