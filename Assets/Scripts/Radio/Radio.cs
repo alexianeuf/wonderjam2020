@@ -37,9 +37,7 @@ public class Radio : MonoBehaviour
 
     internal void CalmMode()
     {
-        Debug.Log("Radio chill un max");
         StartCoroutine("CalmRoutine");
-
     }
 
     IEnumerator CalmRoutine()
@@ -54,9 +52,7 @@ public class Radio : MonoBehaviour
 
     internal void AngryMode()
     {
-        Debug.Log("Radio party hard");
         StartCoroutine("AngerRoutine");
-
     }
 
     IEnumerator AngerRoutine()
