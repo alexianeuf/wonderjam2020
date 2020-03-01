@@ -7,7 +7,7 @@ using UnityEngine.Rendering.PostProcessing;
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    private Camera m_camera;
+    private GameObject m_camera;
 
     [SerializeField]
     private Vector3 m_offsetPosition = Vector3.zero;
@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
     {
         if (m_camera == null)
         {
-            m_camera = Camera.main;
+            m_camera = Camera.main.gameObject;
         }
     }
 

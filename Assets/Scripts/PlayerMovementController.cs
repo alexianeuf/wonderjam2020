@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,33 +8,44 @@ using UnityEngine.InputSystem;
 public class PlayerMovementController : MonoBehaviour
 {
     [SerializeField] private float m_playerSpeed = 10f;
+    [SerializeField] private float m_playerBackwardSpeed = 10f;
     [SerializeField] private float m_rotationStrength = 5f;
-    [SerializeField] private float m_velocityDamp = 1f;
     [SerializeField] private bool isGrounded;
     [SerializeField] private int m_turtleDelay = 4;
 
-
-    private Rigidbody m_rigidbody;
-    private Vector2 m_inputValue;
-    private Vector3 m_moveVector = Vector3.zero;
-    private Vector3 m_velocity = Vector3.zero;
-
-    private IEnumerator m_turtleCoroutine;
-    private bool m_turtleCoroutineStarted;
+    [SerializeField] private float m_velocityDamp = 1f;
 
     public bool IsMoving { get; private set; }
     public bool CanMove = true;
 
-    private PlayerInput playerInput;
+    [Header("Fenzy mode")] [SerializeField]
+    private float m_fenzyAgroDistance = 15f;
+
+    [SerializeField] [Range(0f, 1f)] [Tooltip("1 = more on the pedestrian, 0 = more on teh player")]
+    private float m_fenzyAgro = 0.5f;
+
+    [SerializeField] private int m_fenzyModeFrameNumber = 30;
+    [SerializeField] private AudioSource m_fenzyAudioSource;
+
+    private int m_fenzyModeCounter = 0;
+    private Rigidbody m_rigidbody;
+    private Vector2 m_inputValue;
+    private Vector3 m_moveVector = Vector3.zero;
+    private Vector3 m_nextLookPosition;
+
+    private Vector3 m_velocity = Vector3.zero;
+    private IEnumerator m_turtleCoroutine;
+    private bool m_turtleCoroutineStarted;
+    private bool m_ismFenzyAudioClipNotNull;
 
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
+        m_ismFenzyAudioClipNotNull = m_fenzyAudioSource != null;
+        m_rigidbody = GetComponent<Rigidbody>();
     }
 
     private void Start()
     {
-        m_rigidbody = GetComponent<Rigidbody>();
         m_turtleCoroutine = TurtleCouroutine();
     }
 
@@ -72,9 +84,14 @@ public class PlayerMovementController : MonoBehaviour
             Vector3 rightForwardPos = forwardPos + transform.right * m_rotationStrength;
             Vector3 leftForwardPos = forwardPos - transform.right * m_rotationStrength;
 
-            Vector3 look = Vector3.Lerp(leftForwardPos, rightForwardPos, m_inputValue.x + 1);
+            m_nextLookPosition = Vector3.Lerp(leftForwardPos, rightForwardPos, m_inputValue.x + 1);
 
-            transform.LookAt(look);
+            if (FrenzyManager.isFrenzy)
+            {
+                ApplyFrenzyMode();
+            }
+
+            transform.LookAt(m_nextLookPosition);
         }
     }
 
@@ -82,21 +99,68 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (!Mathf.Approximately(m_inputValue.y, 0f))
         {
-//            Vector3 moveVector = transform.forward * m_realPlayerSpeed * m_inputValue.y;
-//            m_rigidbody.AddForce(moveVector);
-
-//            m_rigidbody.velocity = new Vector3 (moveVector.x, m_rigidbody.velocity.y, moveVector.z);
-            m_moveVector = transform.forward * m_playerSpeed * m_inputValue.y * Time.fixedDeltaTime;
-            m_rigidbody.MovePosition(m_rigidbody.position + m_moveVector);
+            var speed = m_playerSpeed;
+            if (m_inputValue.y < 0)
+                speed = m_playerBackwardSpeed;
+            m_moveVector = transform.forward * speed * m_inputValue.y * Time.fixedDeltaTime;
         }
         else
         {
             // apply the remaining velocity
             m_moveVector = Vector3.SmoothDamp(m_moveVector, Vector3.zero, ref m_velocity, m_velocityDamp);
-            m_rigidbody.MovePosition(m_rigidbody.position + m_moveVector);
         }
 
+        m_rigidbody.MovePosition(m_rigidbody.position + m_moveVector);
+
         ClampAngularVelocity();
+    }
+
+    private void ApplyFrenzyMode()
+    {
+        if (PedestrianManager.m_pedestrianInstances.Count == 0)
+        {
+            return;
+        }
+
+        m_fenzyModeCounter++;
+        if (m_fenzyModeCounter % m_fenzyModeFrameNumber != 0)
+        {
+            return;
+        }
+
+        m_fenzyModeCounter = 0;
+
+        Pedestrian nearestPed = PedestrianManager.m_pedestrianInstances[0];
+        float nearestDistance = Mathf.Infinity;
+
+        foreach (var pedestrian in PedestrianManager.m_pedestrianInstances)
+        {
+            if (!pedestrian.isAlive)
+                continue;
+
+            float distance = Vector3.Distance(m_rigidbody.position, pedestrian.transform.position);
+
+            if (distance < nearestDistance)
+            {
+                var target = pedestrian.transform.position - transform.position;
+                float angle = Vector3.SignedAngle(transform.forward, target, Vector3.up);
+
+                if (angle < 30f && angle > -30f)
+                {
+                    nearestDistance = distance;
+                    nearestPed = pedestrian;
+                }
+            }
+        }
+
+        if (nearestDistance > m_fenzyAgroDistance)
+        {
+            return;
+        }
+
+        if (m_ismFenzyAudioClipNotNull)
+            m_fenzyAudioSource.Play();
+        m_nextLookPosition = Vector3.Lerp(m_nextLookPosition, nearestPed.transform.position, m_fenzyAgro);
     }
 
     private void ClampAngularVelocity()

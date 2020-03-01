@@ -46,12 +46,14 @@ namespace Enemies
             {
                 other.GetComponentInParent<PlayerHealthController>().Damage(Damage);
                 ParticleSystem particleSystem = GetComponentInChildren<ParticleSystem>();
-
+                
                 float duration = 0;
                 audioSource.Stop();
                 audioSource.volume = 1.0f;
                 audioSource.clip = _explosionClip;
                 audioSource.Play();
+                
+                GetComponent<Collider>().enabled = false;
                 
                 if (particleSystem != null)
                 {

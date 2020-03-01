@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class PedestrianManager : MonoBehaviour
@@ -9,14 +8,13 @@ public class PedestrianManager : MonoBehaviour
     [SerializeField] private int m_pedestrianMax = 10;
 
     public int _activePedestriansCount = 0;
+    public static List<Pedestrian> m_pedestrianInstances;
+
     void Awake()
     {
         _activePedestriansCount = 0;
 
-        for (int i = 0; i < m_pedestrianMax; i++)
-        {
-            InstantiatePedestrian();
-        }
+        m_pedestrianInstances = new List<Pedestrian>();
     }
 
     // Update is called once per frame
@@ -35,10 +33,19 @@ public class PedestrianManager : MonoBehaviour
         GameObject spawnPoint = m_wayPointHolder.transform.GetChild(index).gameObject;
 
         // instantiate pedestrian
-        GameObject newPedestrian = Instantiate(m_pedestriansPrefab, spawnPoint.transform.position, Quaternion.identity, transform);
-        newPedestrian.GetComponent<Pedestrian>().m_wayPointHolder = m_wayPointHolder;
+        GameObject newPedestrian = Instantiate(m_pedestriansPrefab, spawnPoint.transform.position, Quaternion.identity,
+            transform);
+        var pedestrianComponent = newPedestrian.GetComponent<Pedestrian>();
+        pedestrianComponent.m_wayPointHolder = m_wayPointHolder;
+        m_pedestrianInstances.Add(pedestrianComponent);
 
         // update count
         _activePedestriansCount++;
+    }
+
+    public static void DestroyPedestrian(GameObject pedestrian)
+    {
+        m_pedestrianInstances.Remove(pedestrian.GetComponent<Pedestrian>());
+        Destroy(pedestrian);
     }
 }

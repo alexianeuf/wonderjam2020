@@ -15,6 +15,7 @@ public class PlayerHealthController : MonoBehaviour
     public void Damage(float damage)
     {
         currentHealth -= damage;
+        PerlinCameraShake.instance.Trauma = 0.5f;
 
         if (currentHealth < 0)
         {
