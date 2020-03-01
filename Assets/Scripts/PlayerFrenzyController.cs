@@ -16,7 +16,7 @@ public class PlayerFrenzyController : MonoBehaviour
     private float _frenzyIncrease = 10;
 
     [SerializeField] private float currentFrenzyLevel;
-    
+
     [SerializeField] [Tooltip("Post process to update")]
     private RedVision _redVision;
 
@@ -37,8 +37,9 @@ public class PlayerFrenzyController : MonoBehaviour
         if (currentFrenzyLevel > _maxFrenzyLevel)
         {
             currentFrenzyLevel = _maxFrenzyLevel;
-            
+
             _redVision.UpdatePostProcess(_maxFrenzyLevel);
+            
             if (!FrenzyManager.isFrenzy)
                 FrenzyManager.instance.OnFrenzyStart();
         }
@@ -50,10 +51,9 @@ public class PlayerFrenzyController : MonoBehaviour
         {
             StartCoroutine(DecreaseFrenzy());
         }
-        
-        // TODO : Add the if statement to not change when in frenzy mode
-        _redVision.UpdatePostProcess(currentFrenzyLevel, _maxFrenzyLevel);
-        
+
+        if (!FrenzyManager.isFrenzy)
+            _redVision.UpdatePostProcess(currentFrenzyLevel, _maxFrenzyLevel);
     }
 
     private IEnumerator DecreaseFrenzy()
@@ -69,7 +69,7 @@ public class PlayerFrenzyController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(5.0f);
-        
+
         isInDecrease = false;
     }
 }
