@@ -9,17 +9,18 @@ This game uses these sounds from freesound:
 	- gun-shoot from Michel Hollicardo (https://freesound.org/people/Michel%20Hollicardo/)
 	- rocket-shoot from cydon (https://freesound.org/people/cydon/)
 	- bomb-small from Zangrutz (https://freesound.org/people/Zangrutz/)
+	- grr from brunchik (https://freesound.org/people/brunchik/)
 	
-
 Icon : 
     - Heart Icon made by Freepik from www.flaticon.com
 
-
 Music :
-“The Jazz Man”
+?The Jazz Man?
 by Eric Matyas
 www.soundimage.org
 
 "Extreme action"
 by Bensound
 www.bensound.com
+
+Environment and characters by SyntyStudios
