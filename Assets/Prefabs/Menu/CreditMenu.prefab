@@ -194,7 +194,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6240161676103296736}
+      - m_Target: {fileID: 0}
         m_MethodName: GoToMainMenu
         m_Mode: 1
         m_Arguments:
@@ -331,14 +331,13 @@ GameObject:
   - component: {fileID: 6240161676103296739}
   - component: {fileID: 6240161676103296741}
   - component: {fileID: 6240161676103296738}
-  - component: {fileID: 6240161676103296736}
   m_Layer: 5
   m_Name: CreditMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6240161676103296739
 RectTransform:
   m_ObjectHideFlags: 0
@@ -404,20 +403,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &6240161676103296736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6240161676103296737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 858111f5238b1cb4aafcd729d78ec04b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_mainMenu: {fileID: 0}
-  m_creditMenu: {fileID: 6240161677580606517}
 --- !u!1 &6240161676219395119
 GameObject:
   m_ObjectHideFlags: 0
