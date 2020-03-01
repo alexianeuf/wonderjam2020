@@ -64,6 +64,9 @@ public class ObjectiveController : MonoBehaviour
     {
         if (objective.Equals(m_currentObjective))
         {
+            // TODO replace 100f with timer value
+            m_player.GetComponent<PlayerScoreController>().IncreaseScore(100f);
+
             SelectNextObjective();
         }
     }
