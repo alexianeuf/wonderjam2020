@@ -14,9 +14,6 @@ namespace Managers
         public void OnFrenzyStart()
         {
             // Enable the enemy manager
-            // Observe if the player is still in frenzy
-            // Red Filter on the camera
-
             isFrenzy = true;
             Radio.instance.AngryMode();
 
