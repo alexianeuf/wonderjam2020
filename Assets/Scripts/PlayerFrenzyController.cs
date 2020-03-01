@@ -39,14 +39,8 @@ public class PlayerFrenzyController : MonoBehaviour
             currentFrenzyLevel = _maxFrenzyLevel;
             
             _redVision.UpdatePostProcess(_maxFrenzyLevel);
-<<<<<<< Updated upstream
-            
             if (!FrenzyManager.isFrenzy)
                 FrenzyManager.instance.OnFrenzyStart();
-=======
-            // TODO : if not in Frenzy mode enable it
-            Debug.Log("Oh no ! I killed to many people !");
->>>>>>> Stashed changes
         }
     }
 
