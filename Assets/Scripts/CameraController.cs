@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class CameraController : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField]
     private float damping = 1;
-
+    
     private void Start()
     {
         if (m_camera == null)
@@ -32,4 +33,5 @@ public class CameraController : MonoBehaviour
          
         m_camera.transform.LookAt(transform);
     }
+    
 }

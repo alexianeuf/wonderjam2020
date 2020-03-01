@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(CameraController))]
 public class PlayerFrenzyController : MonoBehaviour
 {
     [SerializeField] [Tooltip("Max frenzy level")]
