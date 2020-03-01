@@ -53,8 +53,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         CheckIfMoving();
 
-        if (CanMove)
-        {
+        
             if (!IsGrounded())
             {
                 StartTurtleRoutine();
@@ -67,10 +66,10 @@ public class PlayerMovementController : MonoBehaviour
 
             Move();
             Rotate();
-        }
-        else if (m_rigidbody.velocity.magnitude <= 0)
+
+        if (Mathf.Abs(m_moveVector.magnitude) < 0.1f && !CanMove)
         {
-            GameManager.instance.GetComponent<MenuController>().LaunchGameOverMenu();
+            GameManager.instance.GetComponent<MenuController>().LaunchGameOverMenu(DeathCause.LowFuel);
         }
     }
 
@@ -78,7 +77,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Rotate()
     {
-        if (!Mathf.Approximately(m_inputValue.x, 0f))
+        if (!Mathf.Approximately(m_inputValue.x, 0f) && CanMove)
         {
             Vector3 forwardPos = transform.position + (transform.forward * 60);
             Vector3 rightForwardPos = forwardPos + transform.right * m_rotationStrength;
@@ -97,12 +96,12 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Move()
     {
-        if (!Mathf.Approximately(m_inputValue.y, 0f))
+        if (!Mathf.Approximately(m_inputValue.y, 0f) && CanMove)
         {
             var speed = m_playerSpeed;
             if (m_inputValue.y < 0)
                 speed = m_playerBackwardSpeed;
-            m_moveVector = transform.forward * speed * m_inputValue.y * Time.fixedDeltaTime;
+               m_moveVector = transform.forward * speed * m_inputValue.y * Time.fixedDeltaTime;
         }
         else
         {

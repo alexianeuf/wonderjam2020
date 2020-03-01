@@ -52,7 +52,7 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    public void LaunchGameOverMenu()
+    public void LaunchGameOverMenu(DeathCause deathCause)
     {
         GameOverUiGameObject.SetActive(true);
         

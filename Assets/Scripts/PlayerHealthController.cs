@@ -19,7 +19,7 @@ public class PlayerHealthController : MonoBehaviour
 
         if (currentHealth < 0)
         {
-            GameManager.instance.GetComponent<MenuController>().LaunchGameOverMenu();
+            GameManager.instance.GetComponent<MenuController>().LaunchGameOverMenu(DeathCause.LowHealth);
         }
     }
 
