@@ -45357,7 +45357,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 347037623, guid: 2131b8bfc784e6844bde7f65f1d9c0fd, type: 3}
       propertyPath: _fuelUsage
-      value: 2.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 439917940051961277, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
         type: 3}
@@ -45367,12 +45367,17 @@ PrefabInstance:
     - target: {fileID: 439917940051961277, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
         type: 3}
       propertyPath: _frenzyDecrease
-      value: 2.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 439917940051961277, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
         type: 3}
       propertyPath: _frenzyIncrease
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 439917940051961277, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
+        type: 3}
+      propertyPath: _maxFrenzyLevel
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4435204978832094330, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
         type: 3}
@@ -45434,11 +45439,6 @@ PrefabInstance:
       propertyPath: m_camera
       value: 
       objectReference: {fileID: 1121889647}
-    - target: {fileID: 5121048350924147787, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
-        type: 3}
-      propertyPath: m_turtleDelay
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5828594359104317599, guid: 2131b8bfc784e6844bde7f65f1d9c0fd,
         type: 3}
       propertyPath: m_Name
