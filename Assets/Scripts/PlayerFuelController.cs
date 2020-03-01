@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerFuelController : MonoBehaviour
 {
     [SerializeField] [Tooltip("Max fuel quantity")]
-    private float _maxFuelQuantity = 100;
+    public float _maxFuelQuantity = 100;
 
     [SerializeField] [Tooltip("Quantity used per seconds")]
     private float _fuelUsage = 1.0f;
 
-    [SerializeField] private float currentFuelQuantity;
+    [SerializeField] public float currentFuelQuantity;
 
     private PlayerMovementController playerMovementController;
 

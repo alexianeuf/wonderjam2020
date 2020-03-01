@@ -8,5 +8,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         instance = this.gameObject;
+        HUD.HUDInstance.InitHUD();
     }
 }
