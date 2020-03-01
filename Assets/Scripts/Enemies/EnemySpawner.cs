@@ -17,7 +17,7 @@ namespace Enemies
             {
                 if (FrenzyManager.isFrenzy)
                 {
-                    int index = Random.Range(0, _enemiesPrefab.Count - 1);
+                    int index = Random.Range(0, _enemiesPrefab.Count);
                         
                     Instantiate(_enemiesPrefab[index], transform.position, Quaternion.identity, transform);
                 }       
