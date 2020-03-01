@@ -58,8 +58,7 @@ public class PlayerMovementController : MonoBehaviour
         }
         else if (m_rigidbody.velocity.magnitude <= 0)
         {
-            // TODO : Launch GAME OVER Screen - see how prevent a pop if player hit a barrel at the same frame
-            playerInput.defaultActionMap = "UI";
+            GameManager.instance.GetComponent<MenuController>().LaunchGameOverMenu();
         }
     }
 

@@ -11,6 +11,8 @@ public class WayPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<Pedestrian>().OnWayPointEnter(this.gameObject);
+        var pedestrian = other.GetComponent<Pedestrian>();
+        if(pedestrian != null)
+            pedestrian.OnWayPointEnter(this.gameObject);
     }
 }

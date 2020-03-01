@@ -7,6 +7,6 @@ public class PlayerPauseController : MonoBehaviour
 {
     public void OnPause()
     {
-        GameManager.instance.GetComponent<PauseController>().OnPauseRequested();
+        GameManager.instance.GetComponent<MenuController>().OnPauseRequested();
     }
 }

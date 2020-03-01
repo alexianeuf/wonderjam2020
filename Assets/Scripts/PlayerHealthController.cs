@@ -4,7 +4,7 @@ public class PlayerHealthController : MonoBehaviour
 {
     [SerializeField] [Tooltip("Player max health")]
     private float _maxHealth = 100.0f;
-
+    [SerializeField]
     private float currentHealth;
 
     private void Awake()
@@ -18,8 +18,7 @@ public class PlayerHealthController : MonoBehaviour
 
         if (currentHealth < 0)
         {
-            // TODO : launch GameOver Screen
-            gameObject.SetActive(false);
+            GameManager.instance.GetComponent<MenuController>().LaunchGameOverMenu();
         }
     }
 
