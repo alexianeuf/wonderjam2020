@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d00887fa3d78b45bf5518ce2c28bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: Medikit
   _healingPercent: 50
   _pickUpItemSound: {fileID: 8300000, guid: a541ce9df095bed48aa53986871533cb, type: 3}
 --- !u!1001 &1167580513167684040
