@@ -7,7 +7,7 @@ namespace Enemies
     {
         [SerializeField] [Tooltip("Rocket to fire")]
         private GameObject _rocketPrefab;
-        
+
         protected override void AttackPlayer()
         {
             // Reduce the firerate
@@ -17,9 +17,10 @@ namespace Enemies
             
             // Set the rocket values
             Rocket rocket = rocketObject.GetComponent<Rocket>();
-            rocket.Destination = Player.position;
+            rocket.Target = Player.gameObject;
             rocket.Damage = _damage;
             
+            AudioSource.PlayClipAtPoint(_attackClip, Camera.main.transform.position);
             if(particleSystem != null)
                 particleSystem.Play();
 
