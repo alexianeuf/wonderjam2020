@@ -9,6 +9,10 @@ This game uses these sounds from freesound:
 	- gun-shoot from Michel Hollicardo (https://freesound.org/people/Michel%20Hollicardo/)
 	- rocket-shoot from cydon (https://freesound.org/people/cydon/)
 	- bomb-small from Zangrutz (https://freesound.org/people/Zangrutz/)
+	
+
+Icon : 
+    - Heart Icon made by Freepik from www.flaticon.com
 
 
 Music :
