@@ -228,8 +228,8 @@ MonoBehaviour:
   _maxAttackDistance: 10
   _maxDistanceFromPlayer: 50
   _damage: 20
+  _attackClip: {fileID: 8300000, guid: 4556f9d8c7e6d2c42bc1bbb87e2cd8a8, type: 3}
   _chargeSpeed: 30
-  _collidSound: {fileID: 8300000, guid: 4556f9d8c7e6d2c42bc1bbb87e2cd8a8, type: 3}
 --- !u!195 &1004521616
 NavMeshAgent:
   m_ObjectHideFlags: 0

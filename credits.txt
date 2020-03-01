@@ -7,6 +7,12 @@ This game uses these sounds from freesound:
 	- ouch.mp3 from SexyNakedBunny (https://freesound.org/people/SexyNakedBunny/)
 	- clank car crash collision from qubodup (https://freesound.org/people/qudobup/)
 	- gun-shoot from Michel Hollicardo (https://freesound.org/people/Michel%20Hollicardo/)
+	- rocket-shoot from cydon (https://freesound.org/people/cydon/)
+	- bomb-small from Zangrutz (https://freesound.org/people/Zangrutz/)
+	
+
+Icon : 
+    - Heart Icon made by Freepik from www.flaticon.com
 
 
 Music :
