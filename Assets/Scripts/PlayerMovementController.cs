@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovementController : MonoBehaviour
 {
     [SerializeField] private float m_playerSpeed = 10f;
+    [SerializeField] private float m_playerBackwardSpeed = 10f;
     [SerializeField] private float m_rotationStrength = 5f;
     [SerializeField] private bool isGrounded;
     [SerializeField] private int m_turtleDelay = 4;
@@ -98,7 +99,10 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (!Mathf.Approximately(m_inputValue.y, 0f))
         {
-            m_moveVector = transform.forward * m_playerSpeed * m_inputValue.y * Time.fixedDeltaTime;
+            var speed = m_playerSpeed;
+            if (m_inputValue.y < 0)
+                speed = m_playerBackwardSpeed;
+            m_moveVector = transform.forward * speed * m_inputValue.y * Time.fixedDeltaTime;
         }
         else
         {
