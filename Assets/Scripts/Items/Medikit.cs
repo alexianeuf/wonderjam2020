@@ -5,6 +5,10 @@ namespace Items
 {
     public class Medikit : MonoBehaviour
     {
+        [SerializeField]
+        [Tooltip("Item name")]
+        private string _name;
+
         [SerializeField] [Tooltip("Percent of health to give back")] [Range(20, 100)]
         private float _healingPercent;
 
@@ -20,9 +24,9 @@ namespace Items
                 AudioSource.PlayClipAtPoint(_pickUpItemSound, Camera.main.transform.position);
 
                 if (playerHealthController != null)
-                    playerHealthController.Heal(_healingPercent);    
-                
-                Destroy(gameObject);
+                    playerHealthController.Heal(_healingPercent);
+
+                ItemManager.instance.ItemWasConsumed(gameObject);
             }
         }
     }

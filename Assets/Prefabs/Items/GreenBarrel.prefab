@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7816ca3f567c97f4aba088760df481b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: GreenBarrel
   _percentOfFuel: 100
   _pickUpSound: {fileID: 8300000, guid: 6de9abb9c5956e84484e0a97bb614aab, type: 3}
 --- !u!1001 &3326280895993948001

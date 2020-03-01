@@ -6,6 +6,10 @@ namespace Items
 {
     public class Barrel : MonoBehaviour
     {
+        [SerializeField]
+        [Tooltip("Item name")]
+        private string _name;
+
         [SerializeField] [Tooltip("Percentage of fuel to restore")] [Range(25, 100)]
         private float _percentOfFuel;
 
@@ -14,9 +18,10 @@ namespace Items
 
         private void OnTriggerEnter(Collider other)
         {
-            GameObject player = other.transform.parent.gameObject;
-            if (player.CompareTag("Player"))
+
+            if (other.CompareTag("Player"))
             {
+                GameObject player = other.transform.parent.gameObject;
                 PlayerFuelController fuelController = player.GetComponent<PlayerFuelController>();
                 PlayerMovementController movementController = player.GetComponent<PlayerMovementController>();
                 PlayerInput playerInput = player.GetComponent<PlayerInput>();
@@ -33,8 +38,8 @@ namespace Items
                 }
 
                 fuelController.RestoreFuel(_percentOfFuel);
-                
-                Destroy(gameObject);
+
+                ItemManager.instance.ItemWasConsumed(gameObject);
             }
         }
     }
