@@ -26,6 +26,9 @@ namespace Enemies
         [SerializeField] [Tooltip("Damage done when attack success")]
         protected float _damage = 20.0f;
 
+        [SerializeField] [Tooltip("Sound launch when attack the player")]
+        protected AudioClip _attackClip;
+        
         protected bool IsAttacking;
 
         protected Transform Player;

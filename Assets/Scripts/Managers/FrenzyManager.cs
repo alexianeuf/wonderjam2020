@@ -6,9 +6,10 @@ namespace Managers
     {
         public static FrenzyManager instance;
         public static bool isFrenzy = false;
-        void Start()
+        void Awake()
         {
             instance = this;
+            isFrenzy = false;
         }
 
         public void OnFrenzyStart()

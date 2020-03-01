@@ -12,9 +12,6 @@ namespace Enemies
         [SerializeField] [Tooltip("Speed when charge the player")]
         private float _chargeSpeed = 5.0f;
 
-        [SerializeField] [Tooltip("Sound launch when hit the player")]
-        private AudioClip _collidSound;
-
         protected override void AttackPlayer()
         {
             // if speed is not the chargeSpeed
@@ -39,7 +36,7 @@ namespace Enemies
         {
             if (other.CompareTag("Player"))
             {
-                AudioSource.PlayClipAtPoint(_collidSound, other.transform.position, 1.0f);
+                AudioSource.PlayClipAtPoint(_attackClip, other.transform.position, 1.0f);
                 GameObject player = other.transform.parent.gameObject;
                 PlayerHealthController playerHealthController = player.GetComponent<PlayerHealthController>();
 

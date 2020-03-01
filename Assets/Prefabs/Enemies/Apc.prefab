@@ -189,11 +189,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04bd4e4f3bfaf534fb75784bf95f35fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 50
   _angularSpeed: 120
-  _maxAttackDistance: 30
+  _maxAttackDistance: 50
   _maxDistanceFromPlayer: 100
   _damage: 10
+  _attackClip: {fileID: 8300000, guid: d4ceb5854efefd3498e941b7daa41344, type: 3}
   _rocketPrefab: {fileID: 121582, guid: 3bcc03bd08bbf5f45910f907b34fff88, type: 3}
 --- !u!195 &167645361
 NavMeshAgent:

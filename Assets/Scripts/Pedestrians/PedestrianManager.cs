@@ -10,9 +10,10 @@ public class PedestrianManager : MonoBehaviour
 
     public static int _activePedestriansCount = 0;
     public static GameObject PMinstance;
-    void Start()
+    void Awake()
     {
         PMinstance = gameObject;
+        _activePedestriansCount = 0;
     }
 
     // Update is called once per frame

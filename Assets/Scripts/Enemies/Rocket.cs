@@ -5,29 +5,39 @@ namespace Enemies
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(AudioSource))]
     public class Rocket : MonoBehaviour
     {
-        public Vector3 Destination;
+        public GameObject Target;
 
         [SerializeField] [Tooltip("Rocket speed")]
-        private float _speed = 100f;
+        private float _speed = 10f;
+
+        [SerializeField] [Tooltip("Sound when exploded")]
+        private AudioClip _explosionClip;
 
         public float Damage;
 
+        private Rigidbody rig;
+        private AudioSource audioSource;
         
         // Start is called before the first frame update
         void Start()
         {
-            // TODO :Set the movement to the destination
-            GetComponent<Rigidbody>().MovePosition(Destination);
+            audioSource = GetComponent<AudioSource>();
+            rig = GetComponent<Rigidbody>();
             Destroy(gameObject, 5.0f);
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
-            // FOR THE TRIGGER
-            // GetComp ParticleSystem ().Play();
+            Vector3 heading = Target.transform.position - transform.position;
+            float distance = heading.magnitude;
+            Vector3 direction = heading / distance;
+            Vector3 tempVect = direction.normalized * (_speed * Time.fixedDeltaTime);
+            
+            rig.MovePosition(transform.position + tempVect);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -38,6 +48,11 @@ namespace Enemies
                 ParticleSystem particleSystem = GetComponentInChildren<ParticleSystem>();
 
                 float duration = 0;
+                audioSource.Stop();
+                audioSource.volume = 1.0f;
+                audioSource.clip = _explosionClip;
+                audioSource.Play();
+                
                 if (particleSystem != null)
                 {
                     particleSystem.Play();
