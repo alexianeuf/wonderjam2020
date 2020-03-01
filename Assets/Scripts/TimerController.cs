@@ -6,12 +6,11 @@ public class TimerController : MonoBehaviour
 {
     public int maxTime = 30;
     public int currentTime;
-    private IEnumerator coroutine;
+    private IEnumerator coroutine = null;
     
     void Start()
     {
         currentTime = maxTime;
-        coroutine = Timer();
     }
 
     IEnumerator Timer()
@@ -27,7 +26,9 @@ public class TimerController : MonoBehaviour
 
     public void ResetTimer()
     {
-        StopCoroutine(coroutine);
+        if(coroutine != null)
+            StopCoroutine(coroutine);
+        
         coroutine = Timer();
         currentTime = maxTime;
         StartCoroutine(coroutine);
