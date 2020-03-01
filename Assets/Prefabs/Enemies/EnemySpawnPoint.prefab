@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5354142a8a5748baa22ff81ef746c8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 150866, guid: a4822c44d6aff974db90964a4be6862c, type: 3}
+  _enemiesPrefab:
+  - {fileID: 150866, guid: a4822c44d6aff974db90964a4be6862c, type: 3}
+  - {fileID: 119078, guid: b9993c12db5080349964972df52d3c82, type: 3}
 --- !u!65 &709901330
 BoxCollider:
   m_ObjectHideFlags: 0
