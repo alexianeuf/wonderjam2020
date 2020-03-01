@@ -8,12 +8,15 @@ public class PedestrianManager : MonoBehaviour
     [SerializeField] private GameObject m_pedestriansPrefab;
     [SerializeField] private int m_pedestrianMax = 10;
 
-    public static int _activePedestriansCount = 0;
-    public static GameObject PMinstance;
+    public int _activePedestriansCount = 0;
     void Awake()
     {
-        PMinstance = gameObject;
         _activePedestriansCount = 0;
+
+        for (int i = 0; i < m_pedestrianMax; i++)
+        {
+            InstantiatePedestrian();
+        }
     }
 
     // Update is called once per frame
@@ -22,7 +25,7 @@ public class PedestrianManager : MonoBehaviour
         if (_activePedestriansCount < m_pedestrianMax)
         {
             InstantiatePedestrian();
-        }        
+        }
     }
 
     void InstantiatePedestrian()

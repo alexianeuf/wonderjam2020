@@ -88,7 +88,7 @@ public class Pedestrian : MonoBehaviour
         {
             audio.Play();
         }
-        PedestrianManager._activePedestriansCount--;
+        GetComponentInParent<PedestrianManager>()._activePedestriansCount--;
 
         // let it all finish
         yield return new WaitForSeconds(1f);
