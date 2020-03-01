@@ -65,15 +65,57 @@ MonoBehaviour:
   m_wayPointHolder: {fileID: 0}
   m_prefabList:
   - {fileID: 100000, guid: d714ac2c5f4f93d49b94880740d4e6a2, type: 3}
+  - {fileID: 100000, guid: 40ed268e2df0a394ca090fe991bf3af6, type: 3}
+  - {fileID: 100000, guid: ab962cacf7f4cc64fa9cf9cd8f75c972, type: 3}
+  - {fileID: 100000, guid: 2f8d00bf5057f624e949aef802595da9, type: 3}
   - {fileID: 100000, guid: c14bb5ce28dbb7442a2f79d8b6a061ce, type: 3}
+  - {fileID: 100000, guid: b186f9485a0828b468f98fe846ae1a68, type: 3}
+  - {fileID: 100000, guid: 03ffd135f81a3fb4cb6f2e6e944f979d, type: 3}
+  - {fileID: 100000, guid: f19c9246d91b3d5488c65e0539de4da2, type: 3}
+  - {fileID: 100000, guid: d70170446aa035f40a2429d04ab83ea6, type: 3}
+  - {fileID: 100066, guid: 888c7e05ee7700c46a52b3daf2eacbf5, type: 3}
+  - {fileID: 100000, guid: 48d0e91c5bec22942b8ccea02fa05f21, type: 3}
+  - {fileID: 100000, guid: c393539dfea106a45957b13acb445ae9, type: 3}
+  - {fileID: 100000, guid: 595794b9a4c7b884a93afc538ea183fa, type: 3}
   - {fileID: 100000, guid: acc9d8a2d2f9d574885908fdfe7fde10, type: 3}
-  - {fileID: 100066, guid: fe520ce6663e67348a964bf7b4318e26, type: 3}
-  - {fileID: 100000, guid: c2a7d1e33078b94448f5c853a1b8da65, type: 3}
-  - {fileID: 100000, guid: f7add824fb57e364fbcce172770a83bd, type: 3}
-  - {fileID: 100066, guid: 9caa079f9beda554ca9e22d2337f14e2, type: 3}
-  - {fileID: 100066, guid: 4a7c3ad7168bb834b87a91e3f94ad3d6, type: 3}
-  - {fileID: 100066, guid: 495fcda5377a879408fba3c2f456e8fc, type: 3}
+  - {fileID: 100000, guid: 3386efbe8e8a9664bbf5138fd2748628, type: 3}
+  - {fileID: 100000, guid: da2c75d1eb537d343a12a9d832f28807, type: 3}
+  - {fileID: 100000, guid: ea966a6c6626547479c4d8c7b7a4ab8e, type: 3}
+  - {fileID: 100000, guid: 77e9faacde0433743bfa9fab4585a2ab, type: 3}
   - {fileID: 100066, guid: eaa87c0130c9b1f4ba9e270558d2e0a9, type: 3}
+  - {fileID: 100066, guid: ddd740d46a8a6eb4399573a9f3d4b2f4, type: 3}
+  - {fileID: 100000, guid: 214bcce7f27c132428a1a8aba0ea371a, type: 3}
+  - {fileID: 100066, guid: 4f2d47505ddfc604a9f702e0599aa2ed, type: 3}
+  - {fileID: 100066, guid: 6d9c488c3a71ac54bb7f42a32e6d3c38, type: 3}
+  - {fileID: 100000, guid: 49e9a2b80e32aad49b1ea67be50a44ce, type: 3}
+  - {fileID: 100066, guid: 495fcda5377a879408fba3c2f456e8fc, type: 3}
+  - {fileID: 100066, guid: a55a5eaeb8f927a449967b5a27fd8e03, type: 3}
+  - {fileID: 100000, guid: 0d98918798ca2404b9b060a460199585, type: 3}
+  - {fileID: 100066, guid: fe32ce89f99911a478ea9e6736294382, type: 3}
+  - {fileID: 100066, guid: 4a7c3ad7168bb834b87a91e3f94ad3d6, type: 3}
+  - {fileID: 100000, guid: f147a01ef442b2345a3546109476c690, type: 3}
+  - {fileID: 100000, guid: 8c4ecd5eb192f5e4ba4c6d129aa1f2b9, type: 3}
+  - {fileID: 100066, guid: a47f4fac3113f0d4bb65ea27d0dad0c9, type: 3}
+  - {fileID: 100000, guid: 4433cf75ba397654aa7fa86853e4fb70, type: 3}
+  - {fileID: 100066, guid: 3afad42cab5a57a4c9f19f8deaaf8689, type: 3}
+  - {fileID: 100066, guid: 70ab0d3e71b54ac4bbd703cb0a686c4d, type: 3}
+  - {fileID: 100000, guid: 0703a1849c2c89b4db4568688faf0c5f, type: 3}
+  - {fileID: 100066, guid: d494053454742064a9b78ed357c16868, type: 3}
+  - {fileID: 100066, guid: 76141ce09f31e0f43acb603244bea2dc, type: 3}
+  - {fileID: 100000, guid: adf423a4c68c0e44fad04688a734f947, type: 3}
+  - {fileID: 100066, guid: 04bbc969ba1271d4295504ca3f510d22, type: 3}
+  - {fileID: 100066, guid: 5d39e79d23613634bb7d4085aba7f31f, type: 3}
+  - {fileID: 100000, guid: 56eecb6027ff58d46b9b8045ce2f5b66, type: 3}
+  - {fileID: 100066, guid: 9caa079f9beda554ca9e22d2337f14e2, type: 3}
+  - {fileID: 100066, guid: 973da52f37faff44fbaa2270c9c5ea90, type: 3}
+  - {fileID: 100000, guid: f7add824fb57e364fbcce172770a83bd, type: 3}
+  - {fileID: 100066, guid: 83fbe18e5570dd643bd5ec438484c2a2, type: 3}
+  - {fileID: 100066, guid: 1b21c8a9041c4ce4b851f8b993430976, type: 3}
+  - {fileID: 100000, guid: c2a7d1e33078b94448f5c853a1b8da65, type: 3}
+  - {fileID: 100000, guid: 20847b8e912bc604b99e748a676d067b, type: 3}
+  - {fileID: 100000, guid: 882e87ba7c26a9d47a4f001002357e94, type: 3}
+  - {fileID: 100066, guid: fe520ce6663e67348a964bf7b4318e26, type: 3}
+  isAlive: 1
 --- !u!195 &3059055285039071332
 NavMeshAgent:
   m_ObjectHideFlags: 0

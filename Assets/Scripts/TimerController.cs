@@ -21,7 +21,7 @@ public class TimerController : MonoBehaviour
             currentTime--;
         }
        
-        GameManager.instance.GetComponent<MenuController>().LaunchGameOverMenu();
+        GameManager.instance.GetComponent<MenuController>().LaunchGameOverMenu(DeathCause.TimeOut);
     }
 
     public void ResetTimer()
