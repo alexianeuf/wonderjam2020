@@ -14,6 +14,8 @@ public class Pedestrian : MonoBehaviour
     protected NavMeshAgent NavMeshAgent;
     private GameObject m_meshChild;
 
+    public bool isAlive = true;
+
     private void Awake()
     {
         NavMeshAgent = GetComponent<NavMeshAgent>();
@@ -72,6 +74,7 @@ public class Pedestrian : MonoBehaviour
 
     private void OnDeath()
     {
+        isAlive = false;
         StartCoroutine("DeathRoutine");
     }
 
@@ -93,6 +96,6 @@ public class Pedestrian : MonoBehaviour
         // let it all finish
         yield return new WaitForSeconds(1f);
 
-        Destroy(gameObject);
+        PedestrianManager.DestroyPedestrian(gameObject);
     }
 }

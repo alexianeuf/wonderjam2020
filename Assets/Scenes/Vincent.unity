@@ -19592,11 +19592,6 @@ PrefabInstance:
       propertyPath: m_wayPointHolder
       value: 
       objectReference: {fileID: 1335990897}
-    - target: {fileID: 1004250999511328686, guid: c588fe42e57352d4abca2efbf687d626,
-        type: 3}
-      propertyPath: m_pedestrianMax
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 1004250999511328687, guid: c588fe42e57352d4abca2efbf687d626,
         type: 3}
       propertyPath: m_Name
