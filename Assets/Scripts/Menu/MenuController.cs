@@ -10,6 +10,7 @@ public class MenuController : MonoBehaviour
     public GameObject GameOverUiGameObject;
     private bool isInPause = false;
 
+
     public void OnQuit()
     {
         Application.Quit();
@@ -54,13 +55,24 @@ public class MenuController : MonoBehaviour
 
     public void LaunchGameOverMenu(DeathCause deathCause)
     {
-        GameOverUiGameObject.SetActive(true);
-        
-        Time.timeScale = 0f;
+        foreach (ParticleSystem ps in Player.instance.transform.GetComponentsInChildren<ParticleSystem>())
+        {
+            ps.Play();
+        }
+        StartCoroutine(GameOverRoutine());
+    }
 
+    IEnumerator GameOverRoutine()
+    {
         var playerInput = Player.instance.GetComponent<PlayerInput>();
 
-        playerInput.actions.FindActionMap("UI").Enable();
         playerInput.actions.FindActionMap("Player").Disable();
+        yield return new WaitForSeconds(2f);
+        playerInput.actions.FindActionMap("UI").Enable();
+
+        GameOverUiGameObject.SetActive(true);
+
+        Time.timeScale = 0f;
+
     }
 }
