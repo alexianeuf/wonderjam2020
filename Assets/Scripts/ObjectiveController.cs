@@ -58,6 +58,8 @@ public class ObjectiveController : MonoBehaviour
         // update the lists
         m_objectivesDone.Add(m_currentObjective);
         m_selectableObjectives.Remove(m_currentObjective);
+
+        GetComponent<TimerController>().ResetTimer();
     }
 
     public void OnObjectiveEnter(GameObject objective)

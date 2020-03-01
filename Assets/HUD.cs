@@ -7,10 +7,14 @@ public class HUD : MonoBehaviour
 
     [SerializeField] private Slider m_healthSlider;
     [SerializeField] private Slider m_fuelSlider;
+    [SerializeField] private Text m_timerText;
 
     private PlayerHealthController healthComponent;
     private PlayerFuelController fuelComponent;
-
+    private TimerController timerComponent;
+    private PlayerSco timerComponent;
+    
+    
     private void Awake()
     {
         HUDInstance = this;
@@ -20,6 +24,7 @@ public class HUD : MonoBehaviour
     {
         healthComponent = Player.instance.GetComponent<PlayerHealthController>();
         fuelComponent = Player.instance.GetComponent<PlayerFuelController>();
+        timerComponent = GameManager.instance.GetComponent<TimerController>();
 
         m_healthSlider.maxValue = healthComponent._maxHealth;
         m_healthSlider.value = healthComponent.currentHealth;
@@ -33,5 +38,6 @@ public class HUD : MonoBehaviour
     {
         m_healthSlider.value = healthComponent.currentHealth;
         m_fuelSlider.value = fuelComponent.currentFuelQuantity;
+        m_timerText.text = timerComponent.currentTime.ToString();
     }
 }
