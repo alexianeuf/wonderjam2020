@@ -223,8 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23eefa2ef6949738d61807071e6b06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 15
-  _angularSpeed: 120
+  _speed: 50
+  _angularSpeed: 200
   _maxAttackDistance: 10
   _maxDistanceFromPlayer: 50
   _damage: 20

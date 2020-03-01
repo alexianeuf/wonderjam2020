@@ -31,7 +31,7 @@ public class PedestrianManager : MonoBehaviour
         GameObject spawnPoint = m_wayPointHolder.transform.GetChild(index).gameObject;
 
         // instantiate pedestrian
-        GameObject newPedestrian = Instantiate(m_pedestriansPrefab, spawnPoint.transform.position, Quaternion.identity);
+        GameObject newPedestrian = Instantiate(m_pedestriansPrefab, spawnPoint.transform.position, Quaternion.identity, transform);
         newPedestrian.GetComponent<Pedestrian>().m_wayPointHolder = m_wayPointHolder;
 
         // update count
