@@ -59,6 +59,10 @@ public class Pedestrian : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            // update score
+            other.transform.parent.gameObject.GetComponent<PlayerScoreController>().IncreaseScore(-1f);
+
+            // update furry mode
             PlayerFrenzyController frenzyController = other.transform.parent.gameObject.GetComponent<PlayerFrenzyController>();
             frenzyController.IncreaseFrenzyLevel();
 
