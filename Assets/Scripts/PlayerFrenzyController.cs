@@ -1,9 +1,9 @@
 ﻿using Managers;
 using System;
 using System.Collections;
+using PostProcess;
 using UnityEngine;
 
-[RequireComponent(typeof(CameraController))]
 public class PlayerFrenzyController : MonoBehaviour
 {
     [SerializeField] [Tooltip("Max frenzy level")]
@@ -16,6 +16,9 @@ public class PlayerFrenzyController : MonoBehaviour
     private float _frenzyIncrease = 10;
 
     [SerializeField] private float currentFrenzyLevel;
+    
+    [SerializeField] [Tooltip("Post process to update")]
+    private RedVision _redVision;
 
     public float FrenzyLevel => currentFrenzyLevel;
     public float MaxFrenzyLevel => _maxFrenzyLevel;
@@ -34,9 +37,16 @@ public class PlayerFrenzyController : MonoBehaviour
         if (currentFrenzyLevel > _maxFrenzyLevel)
         {
             currentFrenzyLevel = _maxFrenzyLevel;
+            
+            _redVision.UpdatePostProcess(_maxFrenzyLevel);
+<<<<<<< Updated upstream
+            
             if (!FrenzyManager.isFrenzy)
                 FrenzyManager.instance.OnFrenzyStart();
+=======
+            // TODO : if not in Frenzy mode enable it
             Debug.Log("Oh no ! I killed to many people !");
+>>>>>>> Stashed changes
         }
     }
 
@@ -46,6 +56,10 @@ public class PlayerFrenzyController : MonoBehaviour
         {
             StartCoroutine(DecreaseFrenzy());
         }
+        
+        // TODO : Add the if statement to not change when in frenzy mode
+        _redVision.UpdatePostProcess(currentFrenzyLevel, _maxFrenzyLevel);
+        
     }
 
     private IEnumerator DecreaseFrenzy()
@@ -58,7 +72,6 @@ public class PlayerFrenzyController : MonoBehaviour
             currentFrenzyLevel = 0;
             if (FrenzyManager.isFrenzy)
                 FrenzyManager.instance.OnFrenzyExit();
-            Debug.Log("I've been a nice person, I'm better now !");
         }
 
         yield return new WaitForSeconds(5.0f);
