@@ -7,7 +7,11 @@ public class Player : MonoBehaviour
     public static GameObject instance;
     void Start()
     {
-        instance = this.gameObject;
         HUD.HUDInstance.InitHUD();
+    }
+
+    private void Awake()
+    {
+        instance = this.gameObject;
     }
 }

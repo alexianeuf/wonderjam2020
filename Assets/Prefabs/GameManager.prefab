@@ -1156,6 +1156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseUiGameObject: {fileID: 1650905282}
+  GameOverUiGameObject: {fileID: 2746203964017773969}
 --- !u!1 &8759262048839173519
 GameObject:
   m_ObjectHideFlags: 0

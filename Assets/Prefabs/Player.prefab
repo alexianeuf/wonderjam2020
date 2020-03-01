@@ -99,8 +99,9 @@ MonoBehaviour:
   m_playerSpeed: 30
   m_rotationStrength: 5
   m_velocityDamp: 1
-  CanMove: 1
   isGrounded: 0
+  m_turtleDelay: 4
+  CanMove: 1
 --- !u!114 &5089980362920326655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  currentHealth: 0
 --- !u!114 &347037623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +190,7 @@ MonoBehaviour:
   _frenzyDecrease: 2.5
   _frenzyIncrease: 10
   currentFrenzyLevel: 0
+  _redVision: {fileID: 0}
 --- !u!1001 &2746404334051053005
 PrefabInstance:
   m_ObjectHideFlags: 0

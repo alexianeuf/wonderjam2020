@@ -11,7 +11,7 @@ public class HUD : MonoBehaviour
     private PlayerHealthController healthComponent;
     private PlayerFuelController fuelComponent;
 
-    private void Start()
+    private void Awake()
     {
         HUDInstance = this;
     }
