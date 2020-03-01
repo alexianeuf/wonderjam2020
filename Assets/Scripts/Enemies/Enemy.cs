@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Enemies
@@ -42,7 +43,7 @@ namespace Enemies
                 Debug.LogWarning("Please add a player to the scene so enemy can follow them.");
                 isPlayerNotNull = false;
             }
-            
+
             if (NavMeshAgent == null)
             {
                 Debug.LogError("The enemy must have a NavMeshAgent");
@@ -82,5 +83,12 @@ namespace Enemies
         }
 
         protected abstract void AttackPlayer();
+
+        private void OnCollisionStay(Collision other)
+        {
+            if (other.collider.CompareTag("Player"))
+                // Contact with the player the enemy doesn't need to move anymore
+                NavMeshAgent.SetDestination(transform.position);
+        }
     }
 }
