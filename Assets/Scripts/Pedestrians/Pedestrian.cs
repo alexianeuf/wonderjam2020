@@ -74,6 +74,7 @@ public class Pedestrian : MonoBehaviour
 
     private void OnDeath()
     {
+        PerlinCameraShake.instance.Trauma = 0.25f;
         isAlive = false;
         StartCoroutine("DeathRoutine");
     }
