@@ -6,6 +6,7 @@ This game uses these sounds from freesound:
 	- radio static 01.wav from pushkin (https://freesound.org/people/pushkin/)
 	- ouch.mp3 from SexyNakedBunny (https://freesound.org/people/SexyNakedBunny/)
 	- clank car crash collision from qubodup (https://freesound.org/people/qudobup/)
+	- gun-shoot from Michel Hollicardo (https://freesound.org/people/Michel%20Hollicardo/)
 
 
 Music :
