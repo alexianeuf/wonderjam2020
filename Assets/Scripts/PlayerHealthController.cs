@@ -3,9 +3,9 @@
 public class PlayerHealthController : MonoBehaviour
 {
     [SerializeField] [Tooltip("Player max health")]
-    private float _maxHealth = 100.0f;
+    public float _maxHealth = 100.0f;
     [SerializeField]
-    private float currentHealth;
+    public float currentHealth;
 
     private void Awake()
     {
