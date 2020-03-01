@@ -85,7 +85,7 @@ public class PlayerMovementController : MonoBehaviour
 
             m_nextLookPosition = Vector3.Lerp(leftForwardPos, rightForwardPos, m_inputValue.x + 1);
 
-            if (FrenzyManager.isFrenzy || true)
+            if (FrenzyManager.isFrenzy)
             {
                 ApplyFrenzyMode();
             }
